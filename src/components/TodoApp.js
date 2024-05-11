@@ -1,20 +1,21 @@
 import { useState } from "react";
 import Input from "./Input";
 import TodoItem from "./TodoItem";
+import "./TodoApp.css";
 
 function TodoApp() {
   const [todoListItems, setTodoListItems] = useState([]);
 
   return (
-    <div>
+    <div className="todo-list-container">
       <h1>My Todos</h1>
       <Input
         todoListItems={todoListItems}
         setTodoListItems={setTodoListItems}
       />
-      <div>
-        {todoListItems.map((item) => {
-          return <TodoItem key={item.id} />;
+      <div className="todo-items-wrapper">
+        {todoListItems.map((item, index) => {
+          return <TodoItem index={index + 1} key={item.id} todoItem={item} />;
         })}
       </div>
     </div>

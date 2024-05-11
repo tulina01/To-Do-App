@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { PlusIcon } from "@heroicons/react/outline";
+import "./Input.css";
 
 function Input({ todoListItems, setTodoListItems }) {
   const [todoInput, setTodoInput] = useState("");
@@ -12,10 +13,11 @@ function Input({ todoListItems, setTodoListItems }) {
     };
     const newTodoListItems = [...todoListItems, newTodolistItem];
     setTodoListItems(newTodoListItems);
+    setTodoInput("");
   };
 
   return (
-    <div>
+    <div className="todo-input-wrapper">
       <input
         type="text"
         placeholder="Enter Your Todo.."
@@ -24,8 +26,8 @@ function Input({ todoListItems, setTodoListItems }) {
           setTodoInput(event.target.value);
         }}
       />
-      <button className="add-button" onClick={hanldeClick}>
-        <PlusIcon />
+      <button onClick={hanldeClick}>
+        <PlusIcon className="plus-icon" />
       </button>
     </div>
   );
