@@ -1,19 +1,22 @@
 import { useState } from "react";
 import { PlusIcon } from "@heroicons/react/outline";
 import "./Input.css";
+import { v4 } from "uuid";
 
 function Input({ todoListItems, setTodoListItems }) {
   const [todoInput, setTodoInput] = useState("");
 
   const hanldeClick = () => {
-    const newTodolistItem = {
-      id: "1",
-      name: todoInput,
-      isCompleted: false,
-    };
-    const newTodoListItems = [...todoListItems, newTodolistItem];
-    setTodoListItems(newTodoListItems);
-    setTodoInput("");
+    if (todoInput.length > 0) {
+      const newTodolistItem = {
+        id: v4(),
+        name: todoInput,
+        isCompleted: false,
+      };
+      const newTodoListItems = [...todoListItems, newTodolistItem];
+      setTodoListItems(newTodoListItems);
+      setTodoInput("");
+    }
   };
 
   return (

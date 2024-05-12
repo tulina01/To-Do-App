@@ -15,7 +15,15 @@ function TodoApp() {
       />
       <div className="todo-items-wrapper">
         {todoListItems.map((item, index) => {
-          return <TodoItem index={index + 1} key={item.id} todoItem={item} />;
+          return (
+            <TodoItem
+              todoListItems={todoListItems}
+              setTodoListItems={setTodoListItems}
+              index={index + 1}
+              key={item.id}
+              todoItem={item}
+            />
+          );
         })}
       </div>
     </div>
